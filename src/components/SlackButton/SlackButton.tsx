@@ -5,14 +5,15 @@ import SlackIcon from '@/src/assets/slack-logo.svg?react';
 import classes from './SlackButton.module.scss';
 
 interface SlackButtonProps {
+    status: STATUS;
     onStart: () => void;
     onClear: () => void;
-    status: STATUS;
 }
 
-export const SlackButton: FC<SlackButtonProps> = ({ onStart, onClear, status }) => {
+export const SlackButton: FC<SlackButtonProps> = ({ status, onStart, onClear }) => {
     return (
         <button
+            type='button'
             className={clsx(classes.slackButton, classes[status])}
             onMouseDown={onStart}
             onMouseUp={onClear}
@@ -21,6 +22,8 @@ export const SlackButton: FC<SlackButtonProps> = ({ onStart, onClear, status }) 
         >
             <span className={classes.label}>Send to</span>
             <SlackIcon className={classes.slackLogo} />
+
+            {/*Absolute positioning*/}
             <div className={classes.spinner} />
             <span className={clsx(classes.overlay, classes.success)}>Sent ✅</span>
             <span className={clsx(classes.overlay, classes.error)}>Error ❌</span>

@@ -11,12 +11,12 @@ export default defineConfig({
         target: 'esnext',
         rollupOptions: {
             input: {
-                content: resolve(__dirname, 'src/pages/content.tsx'),
+                main: resolve(__dirname, 'src/pages/main.tsx'),
             },
             output: {
                 format: 'iife',
                 inlineDynamicImports: true,
-                entryFileNames: 'content.js',
+                entryFileNames: 'main.js',
             },
         },
     },

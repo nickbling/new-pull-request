@@ -1,4 +1,3 @@
-// background.ts
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message.type === 'sendToSlack') {
         sendToSlack(message.payload).then((success) => {
@@ -26,6 +25,15 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     }
 
     return false;
+});
+
+chrome.webNavigation.onHistoryStateUpdated.addListener(async (details) => {
+    if (!details.url.includes('/pull/')) return;
+
+    await chrome.scripting.executeScript({
+        target: { tabId: details.tabId },
+        files: ['main.js']
+    });
 });
 
 async function sendToSlack(message: string): Promise<boolean> {
