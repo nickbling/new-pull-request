@@ -1,0 +1,70 @@
+.gh-slack-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  padding: 0 8px;
+  height: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: #4A154B;
+  border: 1px solid #222;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+.gh-slack-button:hover {
+  background: #5E1A60;
+  border-color: #5E1A60;
+}
+.gh-slack-button .label {
+  transition: opacity 0.2s;
+}
+.gh-slack-button.loading .label {
+  opacity: 0;
+}
+.gh-slack-button .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  font-size: 14px;
+  font-weight: 500;
+}
+.gh-slack-button .overlay.success {
+  color: #2EB67D;
+}
+.gh-slack-button .overlay.error {
+  color: #E01E5A;
+}
+.gh-slack-button.success .overlay.success, .gh-slack-button.error .overlay.error {
+  visibility: visible;
+}
+.gh-slack-button .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  visibility: hidden;
+}
+.gh-slack-button.loading .spinner {
+  visibility: visible;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=content.css.map */

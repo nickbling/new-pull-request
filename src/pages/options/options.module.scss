@@ -1,0 +1,48 @@
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  padding: 24px;
+  background-color: #fdfdfd;
+  color: #222;
+  min-width: 320px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  label {
+    font-weight: 600;
+  }
+
+  input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  button {
+    width: fit-content;
+    padding: 6px 12px;
+    background-color: #4A154B;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #5E1A60;
+    }
+  }
+
+  span {
+    color: #2EB67D;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
