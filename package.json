@@ -1,7 +1,7 @@
 {
   "name": "new-pull-request",
   "description": "Easily share GitHub pull requests with your team on Slack.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "scripts": {
     "build:background": "vite build --config vite.background.config.ts",

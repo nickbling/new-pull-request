@@ -15,12 +15,20 @@ export const useSlackButton = () => {
 
             (async () => {
                 try {
-                    const title = document.querySelector<HTMLHeadingElement>(TITLE_CLASS)?.innerText.trim() || '';
-                    const url = location.href;
+                    const title = document.querySelector<HTMLHeadingElement>(TITLE_CLASS)?.innerText.trim() || 'Untitled PR';
+
+                    const prMatch = location.href.match(/(https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+)/);
+                    const prUrl = prMatch ? prMatch[1] : location.href;
+
+                    const authorLink = document.querySelector<HTMLAnchorElement>('a.author');
+                    const authorName = authorLink?.innerText || 'unknown';
+                    const authorProfileUrl = authorLink?.href || '#';
+
+                    const slackMessage = `<${prUrl}|${title}> by <${authorProfileUrl}|${authorName}>`;
 
                     const resPromise = chrome.runtime.sendMessage({
                         type: 'sendToSlack',
-                        payload: `<${url}|${title}>`
+                        payload: slackMessage
                     });
 
                     const [res] = await Promise.all([resPromise, loadingMinTime]);
